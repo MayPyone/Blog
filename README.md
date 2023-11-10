@@ -83,7 +83,7 @@ Clone this repository to your desired folder:
 Install this project with:
 
 ```sh
-  cd catalog-of-my-things
+  cd blog
   bundle install
   gem install --no-document rubocop -v '>= 1.0, < 2.0'
   gem install rspec
