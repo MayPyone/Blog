@@ -5,7 +5,7 @@ RSpec.describe Comment, type: :model do
     it 'should increase comment count on the post' do
       user1 = User.create(name: 'may', photo: 'mm',
                           bio: 'student', post_counter: 0)
-      post = Post.create(title: 'MoonLight', text: 'I love moonlight serenity', author: user1, like_counter: 5,
+      post = Post.create(title: 'The sea', text: 'Fish swim', author: user1, like_counter: 5,
                          comment_counter: 2)
       comment = Comment.create(post:, user: user1)
 
