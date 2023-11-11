@@ -12,8 +12,18 @@ RSpec.describe User, type: :model do
     expect(subject).not_to be_valid
   end
 
+  it 'name should be valid' do
+    subject.name = 'Bijay'
+    expect(subject).to be_valid
+  end
+
   it "post counter shouldn't be valid" do
     subject.post_counter = nil
     expect(subject).not_to be_valid
+  end
+
+  it 'post counter should be valid' do
+    subject.post_counter = 5
+    expect(subject).to be_valid
   end
 end

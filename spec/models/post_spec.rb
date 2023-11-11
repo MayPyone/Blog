@@ -5,15 +5,16 @@ require 'rails_helper'
 RSpec.describe Post, type: :model do
   let(:user) { User.new(name: 'user1') }
 
-  subject { Post.new(title: nil, text: 'Hi', comment_counter: 0, like_counter: 2) }
+  subject { Post.new(title: 'Intro', text: 'Hi', comment_counter: 0, like_counter: 2, author: user) }
 
   it 'is valid with valid attributes' do
-    expect(subject).to be_present
+    expect(subject).to be_valid
   end
 
   it 'cannot be blank' do
     subject.title = nil
-    expect(subject.errors[:title]).to be_empty
+    expect(subject).to be_invalid
+    expect(subject.errors[:title]).to include("can't be blank")
   end
 
   it 'is not valid with a title longer than 250 characters' do
