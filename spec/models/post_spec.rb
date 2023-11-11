@@ -22,12 +22,22 @@ RSpec.describe Post, type: :model do
     expect(subject.errors[:title]).to be_empty
   end
 
+  it 'should be invalid for likes counters' do
+    subject.like_counter = nil
+    expect(subject).to be_invalid
+  end
+
   it 'updates the likes counter after creating a like' do
     expect(subject.like_counter).to eq(2)
   end
 
   it 'updates the likes counter after creating a like' do
     expect(subject.comment_counter).to eq(0)
+  end
+
+  it 'should be invalid for comment counters' do
+    subject.comment_counter = nil
+    expect(subject).to be_invalid
   end
 
   it 'Text should be the same' do
