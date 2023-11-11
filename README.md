@@ -74,8 +74,8 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 ```sh
-  cd Catalog-of-my-things
-  git clone https://github.com/MayPyone/Catalog-of-my-things.git
+  cd blog
+  git clone https://github.com/MayPyone/Blog.git
 ```
 
 ### Install
@@ -107,7 +107,6 @@ To run tests, run the following command:
 - `rspec spec --format doc`
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ### Deployment
 
 - Project is not deployed
@@ -136,8 +135,6 @@ To run tests, run the following command:
 ## 🤝 Contributing <a name="contributing"></a>
 
 Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](https://github.com/MayPyone/Catalog-of-my-things/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
