@@ -16,7 +16,7 @@ RSpec.describe 'Users', type: :request do
   end
 
   describe 'View for users' do
-    it 'show all the included elements from the index page' do
+    it 'show all the included elements from the index page and render the template' do
       get '/users'
       expect(response.body).to include('<h1>Users#index</h1>')
       expect(response.body).to include('<p>user name </p>')
@@ -25,8 +25,12 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'render the show page' do
-      get '/users/123'
+      get '/users/shows'
       expect(response.body).to render_template('show')
+      expect(response.body).to include('<h1>Users#show</h1>')
+      expect(response.body).to include('<p>user name</p>')
+      expect(response.body).to include('<p>bio</p>')
+      expect(response.body).to include('<p>post1</p>')
     end
 
     it 'mock one element' do
