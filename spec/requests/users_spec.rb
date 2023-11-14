@@ -14,4 +14,25 @@ RSpec.describe 'Users', type: :request do
       expect(response).to have_http_status(:success)
     end
   end
+
+  describe 'View for users' do
+    it 'show all the included elements from the index page' do
+      get '/users'
+      expect(response.body).to include('<h1>Users#index</h1>')
+      expect(response.body).to include('<p>user name </p>')
+      expect(response.body).to include('<p>number of post </p>')
+      expect(response.body).to render_template('index')
+    end
+
+    it 'render the show page' do
+      get '/users/123'
+      expect(response.body).to render_template('show')
+    end
+
+    it 'mock one element' do
+      user = User.create!(id: 1, name: 'may')
+      get '/users'
+      assert_includes response.body, user.id.to_s
+    end
+  end
 end
