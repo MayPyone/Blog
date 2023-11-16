@@ -1,3 +1,13 @@
-<h1>Users#index</h1>
-<p>user name </p>
-<p>number of post </p>
+<%= stylesheet_link_tag 'style.css' %>
+<% @users.each do |user| %>
+<div class="user-index">
+<div class='profile'><img src="<%= user.photo %>" alt="User Photo"/>
+ </div>
+<div class='name-postnumber'>
+<div> <%= link_to user.name, user_path(user.id) %>
+</div>
+<p class='num-post'> number of posts: <%= user.posts.count %></p>
+</div>
+
+</div>
+<% end %>

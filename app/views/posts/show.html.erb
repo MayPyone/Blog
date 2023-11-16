@@ -1,6 +1,19 @@
-<h1>Posts#show</h1>
-<p>post1</p>
-<p>comment1</p>
-<p>comment2</p>
-<p>comment3</p>
-<p>comment4</p>
+
+<section class="show-post"><span><div>Posts1 by <%= @name%><div> 
+<div class="counter"> 
+      <p><%= "comments: #{@post.comment_counter}, "%> <%= "Like: #{@post.like_counter}"%></p>
+      </div>
+ </span>
+<div><%= @text%></div>
+</section>
+
+<section class='comments comment-post'>
+  <% if @comments%>
+  <% @comments.each do |comment| %>
+    <p><%= comment.user.name %>: <%= comment.text %></p>
+  <% end %>
+<% else %>
+  <p>No recent comments.</p>
+<% end %>
+</section>
+

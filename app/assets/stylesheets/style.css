@@ -1,0 +1,70 @@
+.user-index,
+.bio {
+  display: grid;
+  background-color: pink;
+  grid-template-columns: 40% 50%;
+  font-size: 20px;
+  margin: 2% 5%;
+  padding: 1%;
+  align-items: center;
+}
+
+.num-post {
+  margin-top: 2.5%;
+}
+
+.name-postnumber {
+  display: flex;
+  justify-content: space-around;
+}
+
+img {
+  width: 80px;
+  height: 100px;
+}
+
+.bio {
+  display: flex;
+}
+
+.post-index {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  justify-content: flex-start;
+}
+
+.counter p {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.post-inner {
+  background-color: pink;
+  margin: 1% 5%;
+  padding: 1%;
+}
+
+button {
+  margin: 1% auto;
+  background-color: rgb(105, 169, 196);
+  width: 10%;
+}
+
+.show-counter {
+  margin: 0;
+}
+
+.show-post {
+  background-color: pink;
+}
+
+section {
+  font-size: 20px;
+}
+
+.comment-post {
+  margin-top: 2%;
+  background-color: gray;
+}
