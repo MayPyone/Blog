@@ -34,10 +34,10 @@ img {
   justify-content: flex-start;
 }
 
-.counter p {
+.counter {
   display: flex;
-  justify-content: flex-end;
   padding: 0;
+  justify-content: left;
 }
 
 .post-inner {
@@ -67,4 +67,18 @@ section {
 .comment-post {
   margin-top: 2%;
   background-color: gray;
+}
+
+.like-button {
+  margin-top: 0;
+}
+
+.comment-button {
+  margin-left: 85%;
+  margin-top: 0;
+  background-color: whitesmoke;
+}
+
+.comment-button a {
+  text-decoration: none;
 }

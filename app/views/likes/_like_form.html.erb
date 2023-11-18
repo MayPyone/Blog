@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <div id="like-button" data-post-id="<%= post.id %>" data-likes-count="<%= post.likes.count %>">
+    <%= render 'likes/like_button', post: post %>
+  </div>
+<% else %>
+  <%= link_to 'Sign in to like', new_user_session_path %>
+<% end %>
