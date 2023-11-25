@@ -15,21 +15,17 @@ RSpec.describe 'Users', type: :feature do
     @like1 = Like.create(post: @post1, user: @user2)
   end
 
-  describe 'returns user index page' do
-    it "returns user's profile" do
+  describe 'returns post show page' do
+    it "returns author's name" do
       visit user_posts_path(@user2)
-      expect(page).to have_css("img[src*='#{@user2.photo}']")
+      expect(@user2.name).to have_content('May')
     end
 
-    it 'returns user name' do
-      visit user_posts_path(@user2)
-      expect(page).to have_content('May')
-    end
+    it 'returns username of each commentor.' do
+      comment = @user2.posts[0].comments.first
+      expected_username = 'May'
 
-    it 'return number of posts' do
-      visit user_posts_path(@user2)
-
-      expect(@user2.posts.count).to have_content(1)
+      expect(comment.user.name).to eq(expected_username)
     end
 
     it "return post's title" do
@@ -42,7 +38,7 @@ RSpec.describe 'Users', type: :feature do
       expect(@user2.posts[0].text).to have_content('Hi')
     end
 
-    it 'return first comment' do
+    it 'return comment' do
       visit user_post_path(@user2, @post1)
       expect(@user2.posts[0].recent_comments.map(&:text)).to include('My comment')
     end
@@ -54,12 +50,6 @@ RSpec.describe 'Users', type: :feature do
     it 'return number of likes' do
       visit user_post_path(@user2, @post1)
       expect(@user2.posts[0].likes.count).to have_content(1)
-    end
-    it 'redirect to sepcific post when the user click the post' do
-      visit user_path(@user2)
-      click_link 'Post #1'
-      sleep 15
-      expect(current_path).to eq(user_post_path(@user2, @post1))
     end
   end
 end

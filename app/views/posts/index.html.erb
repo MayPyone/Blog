@@ -8,18 +8,6 @@
   </div>
 </div>
 
-
-<section>
-<div class="user-index">
-  <div class='profile'>
-    <img src="<%= @user.photo %>" alt="User Photo" />
-  </div>
-  <div class='name-postnumber'>
-    <div><%= @user.name %></div>
-    <p class='num-post'>Number of posts: <%= @user.posts.count %></p>
-  </div>
-</div>
-
 <div class="post-index">
   <div class="post-inner">
     <% if @posts.present? %>
