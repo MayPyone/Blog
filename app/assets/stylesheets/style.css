@@ -82,3 +82,7 @@ section {
 .comment-button a {
   text-decoration: none;
 }
+
+.comments {
+  background-color: gray;
+}
