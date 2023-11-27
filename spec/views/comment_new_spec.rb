@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :feature do
+    
   before do
     @user1 = User.create!(id: 5, name: 'Bijay',
                           photo: 'https://c0.klipartz.com/pngpicture/695/991/gratis-png-profesor.png', bio: 'officer')
@@ -15,6 +16,7 @@ RSpec.describe 'Users', type: :feature do
     @like1 = Like.create(post: @post1, user: @user2)
   end
 
+  #checks if a new comments is created
   describe 'Create a new comment' do
     it 'return comment form content' do
       visit new_user_post_comment_path(@user2, @post1)
