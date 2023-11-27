@@ -86,3 +86,14 @@ section {
 .comments {
   background-color: gray;
 }
+
+.pagination {
+  align-items: center;
+}
+
+.pagination button {
+  background-color: rgba(0, 0, 255, 0.491);
+  display: flex;
+  margin: 0 auto;
+  width: 15%;
+}

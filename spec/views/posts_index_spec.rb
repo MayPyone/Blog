@@ -10,6 +10,8 @@ RSpec.describe 'Users', type: :feature do
     Post.create!(title: 'Intro1', text: 'Hi', comment_counter: 0, like_counter: 2, author: @user1)
     Post.create!(title: 'Intro', text: 'Hi', comment_counter: 0, like_counter: 2, author: @user1)
     Post.create!(title: 'Intro', text: 'Hi', comment_counter: 0, like_counter: 2, author: @user1)
+    Post.create!(title: 'Intro', text: 'Hi', comment_counter: 0, like_counter: 2, author: @user1)
+
     @post1 = Post.create!(title: 'Intro', text: 'Hi', comment_counter: 0, like_counter: 2, author: @user2)
     @comment1 = Comment.create(post: @post1, user: @user2, text: 'My comment')
     @like1 = Like.create(post: @post1, user: @user2)
@@ -30,6 +32,13 @@ RSpec.describe 'Users', type: :feature do
       visit user_posts_path(@user2)
 
       expect(@user2.posts.count).to have_content(1)
+    end
+
+    it 'return pagination button' do
+      visit user_path(@user1)
+      click_button('See all posts')
+      sleep 10
+      expect(page).to have_css('.pagination')
     end
 
     it "return post's title" do
