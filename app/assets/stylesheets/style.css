@@ -97,3 +97,15 @@ section {
   margin: 0 auto;
   width: 15%;
 }
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* grabs all button */
+.actions input[type="submit"] {
+  width: 100%;
+  color: green;
+}
