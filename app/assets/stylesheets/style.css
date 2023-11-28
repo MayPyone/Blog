@@ -104,6 +104,7 @@ section {
   align-items: center;
 }
 
+/* grabs all button */
 .actions input[type="submit"] {
   width: 100%;
 }
