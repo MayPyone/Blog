@@ -4,7 +4,7 @@
 <div class='profile'><img src="<%= user.photo %>" alt="User Photo"/>
  </div>
 <div class='name-postnumber'>
-<div> <%= link_to user.name, user_path(user.id) %>
+<div> <%= link_to user.name, user_path(user) %>
 </div>
 <p class='num-post'> number of posts: <%= user.posts.count %></p>
 </div>

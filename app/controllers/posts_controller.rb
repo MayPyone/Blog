@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts
+    @posts = @user.posts.includes(:comments).paginate(page: params[:page], per_page: 3)
     @post = Post.where(id: @posts.pluck(:id)).take
     @recent_comment = @post.recent_comments if @post
   end

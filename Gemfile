@@ -4,6 +4,7 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 
 ruby '3.2.2'
 gem 'devise'
+gem 'will_paginate', '~> 3.3'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.1.1'
 
@@ -66,5 +67,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'database_cleaner'
   gem 'selenium-webdriver'
 end
