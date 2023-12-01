@@ -7,3 +7,12 @@ class Ability
     can(:update, Comment, user:)
 
     if user.is?('default') # additional permissions for logged in users (they can read their own posts)
+     can %i[create update destroy], Post, author: user
+      can :destroy, Comment, user:
+    else
+      can :create, Post
+      can :destroy, Post
+      can :update, Post
+      can :destroy, Comment
+    end
+  end
