@@ -16,3 +16,4 @@ class Ability
       can :destroy, Comment
     end
   end
+end 
