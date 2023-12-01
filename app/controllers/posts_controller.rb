@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:comments).paginate(page: params[:page], per_page: 3)
-    @post = Post.where(id: @posts.pluck(:id)).take
+    @post = @posts.first
     @recent_comment = @post.recent_comments if @post
   end
 
@@ -11,7 +13,6 @@ class PostsController < ApplicationController
     @user = @post.author
     @name = @user.name if @user
     @text = @post.text
-    @user = User.find(params[:user_id])
     @posts = @user.posts
     @comments = Comment.where(post_id: @posts.pluck(:id))
   end
@@ -24,9 +25,23 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
 
-    return if @post.save
+    if @post.save
+      redirect_to user_post_path(current_user, @post)
+    else
+      render 'new'
+    end
+  end
 
-    render 'new'
+  def destroy
+    @user = User.find(params[:user_id])
+    @post = @user.posts.find_by(id: params[:id])
+    if @post
+      @post.destroy
+      flash[:notice] = 'Post was deleted.'
+    else
+      flash[:alert] = 'Post could not be found.'
+    end
+    redirect_to user_posts_path(@user)
   end
 
   private

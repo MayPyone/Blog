@@ -109,3 +109,7 @@ section {
   width: 100%;
   color: green;
 }
+
+.post {
+  display: flex;
+}

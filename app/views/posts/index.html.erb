@@ -15,7 +15,7 @@
         <%= link_to "Post ##{index + 1}", user_post_path(@user.id, post.id) %>
         <p><%= post.text %></p>
         <div class="counter">
-          <p><%= "Comments: #{post.comment_counter}, " %><%= "Likes: #{pluralize(post.likes.count, 'like')}" %></p>
+          <p><%= "Comments: #{post.comments.count}, " %><%= "Likes: #{pluralize(post.likes.count, 'like')}" %></p>
         </div>
         <section class='comments'>
   <% if post.recent_comments.present? %>

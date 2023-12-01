@@ -1,6 +1,15 @@
 <section class="show-post">
   <span>
-    <div>Posts <%= @posts.count %> by <%= @name %></div>
+    <div class="post">Posts <%= @posts.count %> by <%= @name %>
+    <div class="delete-post">
+    <% if can? :destroy, @post %>
+    <%= form_with url: user_post_path(@post.author, @post), method: :delete do |form| %>
+      <%= form.submit 'Delete post', data: { confirm: 'Are you sure?' }, class: "delete-button btn" %>
+    <% end %>
+  <% end %>
+
+      </div>  
+    </div>
     <div class="counter">
       
         <button class='comment-button'><%= link_to "Comments: #{@post.comments.count}", new_user_post_comment_path(@user, @post) %></button>
@@ -13,16 +22,19 @@
   </span>
   <div><%= @text %></div>
 </section>
-
 <section class='comments comment-post'>
   <% if @post.comments.any? %>
     <% @post.comments.each do |comment| %>
-      <p><%= comment.user.name %>: <%= comment.text %></p>
+      <p><%= comment.user.name %>: <%= comment.text %></p> 
+      
+      <% if can? :destroy, comment %>
+        <%= form_with url: user_post_comment_path(@post.author, @post, comment), method: :delete do |form| %>
+          <%= form.submit 'Delete Comment', data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      <% end %>
     <% end %>
   <% else %>
     <p>No comments for this post.</p>
   <% end %>
-
-  
 </section>
 
