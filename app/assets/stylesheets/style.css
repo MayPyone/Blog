@@ -107,7 +107,7 @@ section {
 /* grabs all button */
 .actions input[type="submit"] {
   width: 100%;
-  color: green;
+  color: purple;
 }
 
 .post {
