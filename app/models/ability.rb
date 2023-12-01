@@ -12,7 +12,6 @@ class Ability
     else
       can :create, Post
       can :destroy, Post
-      can :update, Post
       can :destroy, Comment
     end
   end
