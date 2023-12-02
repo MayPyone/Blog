@@ -36,6 +36,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @post = @user.posts.find_by(id: params[:id])
     if @post
+      @post.comments.destroy_all
       @post.destroy
       flash[:notice] = 'Post was deleted.'
     else
