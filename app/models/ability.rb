@@ -2,17 +2,14 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :read, Post
-    can :read, Comment
-    can :create, Comment
+    user ||= User.new # guest user (not logged in)
 
-    if user.is?('default') # additional permissions for logged in users (they can read their own posts)
-      can %i[create destroy], Post, author: user
-      can :destroy, Comment, user:
+    if user.admin?
+      can :manage, :all
     else
-      can :create, Post
-      can :destroy, Post
-      can :destroy, Comment
+      can :manage, Post, author_id: user.id
+      can :manage, Comment, user_id: user.id
+      can :read, :all
     end
   end
 end

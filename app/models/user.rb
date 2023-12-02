@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :comments
   validates :name, presence: true
   validates :post_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  ROLES = %i[admin default].freeze
+  enum role: { user: 'user', admin: 'admin' }
   def is?(requested_role)
     role == requested_role
   end
