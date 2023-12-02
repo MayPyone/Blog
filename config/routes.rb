@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api do
+    resources :users do
+      resources :posts do
+        resources :comments
+      end
+    end
+  end
   devise_for :users, :controllers => { :confirmations => 'devise/confirmations' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -6,8 +13,8 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
    root "users#index"
    resources :users, only: [:index, :show] do
-    resources :posts, only: [:index, :show, :new, :create] do
-      resources :comments, only: [:new, :create] 
+    resources :posts, only: [:index, :show, :new, :create, :destroy] do
+      resources :comments, only: [:new, :create, :destroy] 
       resources :likes, only: [:create]
   end
 end
